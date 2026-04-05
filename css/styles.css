@@ -36,6 +36,10 @@ img {
 
 .page-header {
    border-bottom: 1px solid #e7e9fc;  
+   box-shadow: 
+   0 1px 6px 0 rgba(46, 47, 66, 0.08), 
+   0 1px 1px 0 rgba(46, 47, 66, 0.16), 
+   0 2px 1px 0 rgba(46, 47, 66, 0.08);
 }
 
 .header-container {
@@ -78,6 +82,7 @@ img {
 }
 
 .nav-link {
+    position: relative;
     padding: 24px 0;
     display: block;
     font-weight: 500;
@@ -85,12 +90,44 @@ img {
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #2e2f42;
+
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link:hover,
 .nav-link:focus {
     color: #404bbf;
 }
+
+.nav-link.current {
+    position: relative;
+    color: #404bbf;
+
+}
+
+.nav-link::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+
+    background-color: #404bbf;
+
+    opacity: 0;
+
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after,
+.nav-link.current::after {
+    opacity: 1;
+}    
 
 /* ====== CONTACTS STYLES ====== */
 
@@ -112,6 +149,8 @@ img {
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #434455;
+
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contacts-link:hover,
@@ -131,6 +170,15 @@ img {
 .hero {
     background-color: #2e2f42;
     padding: 188px 0;
+
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+    url(../images/hero/bg-people-office\ 1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-title {
@@ -254,6 +302,10 @@ img {
     background-color: #ffffff;
     width: calc((100% - 3 * 24px) / 4);
     border-radius: 0 0 4px 4px;
+    box-shadow: 
+    0 2px 1px 0 rgba(46, 47, 66, 0.08), 
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 
+    0 1px 6px 0 rgba(46, 47, 66, 0.08);
 }
 
 .team-name {
@@ -274,6 +326,41 @@ img {
     color: #434455;
 }
 
+/* ====== SOCIAL MEDIA STYLES ====== */
+
+.team-social-list {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 8px;
+}
+
+.team-social-item {
+    width: 40px;
+    height: 40px;
+}
+
+.social-link-item {
+    width: 100%; 
+    height: 100%;
+    background-color: #4d5ae5;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon {
+    fill: #f4f4fd;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-link-item:hover,
+.social-link-item:focus {
+    background-color: #404bbf;
+}
+
 /* ====== PORTFOLIO STYLES ====== */
 
 .our-portfolio {
@@ -289,6 +376,39 @@ img {
 .portfolio-item {
     background-color: #fff;
     width: calc((100% - 2 * 24px) / 3);
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item:hover,
+.portfolio-item:focus {
+    box-shadow: 
+    0 2px 1px 0 rgba(46, 47, 66, 0.08), 
+    0 1px 1px 0 rgba(46, 47, 66, 0.16), 
+    0 1px 6px 0 rgba(46, 47, 66, 0.08);
+}
+
+.overlay-portfolio-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay-portfolio-text {
+    color: #f4f4fd;
+    background-color: #4d5ae5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 360px;
+    height: 300px;
+    padding: 40px 32px;
+    overflow: auto;
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-item:hover .overlay-portfolio-text,
+.portfolio-item:focus .overlay-portfolio-text  {
+    transform: translateY(0);
 }
 
 .portfolio-box {
@@ -331,6 +451,11 @@ img {
 
 /* ====== FOOTER STYLES ====== */
 
+.footer {
+    display: flex;
+    align-items: baseline;
+}
+
 .page-footer {
     background-color: #2e2f42;
     padding: 100px 0;
@@ -351,4 +476,28 @@ img {
     letter-spacing: 0.02em;
     color: #f4f4fd;
     max-width: 264px;
+}
+
+.footer-social-list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.footer-social-item {
+    width: 40px;
+    height: 40px;
+}
+
+.social-footer-box .social-link-item:hover,
+.social-footer-box .social-link-item:focus {
+    background-color: #31d0aa;
+}
+
+.footer-social-text {
+    color: #ffffff;
+    font-weight: 500;
+    margin-bottom: 16px;
 }
